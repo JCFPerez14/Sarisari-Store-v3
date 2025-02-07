@@ -1,0 +1,17 @@
+Options -Indexes
+Options -MultiViews
+Options -FollowSymLinks
+
+IndexIgnore *
+
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+    Order allow,deny
+    Deny from all
+</Files>
+
+ServerSignature Off
