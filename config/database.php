@@ -6,10 +6,13 @@ define('DB_NAME', 'shop_db');
 
 function connectDB() {
     try {
-        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-        if (!$conn) {
-            throw new Exception(mysqli_connect_error());
+        $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        
+        if ($conn->connect_error) {
+            throw new Exception("Connection failed: " . $conn->connect_error);
         }
+        
+        $conn->set_charset("utf8mb4");
         return $conn;
     } catch (Exception $e) {
         error_log("Database connection error: " . $e->getMessage());

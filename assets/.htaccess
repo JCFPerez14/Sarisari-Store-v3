@@ -1,0 +1,14 @@
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "http://localhost"
+    
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+</IfModule>
+
+<FilesMatch "\.(php|htaccess|config)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+powershell -ExecutionPolicy Bypass -File download-assets.ps1
